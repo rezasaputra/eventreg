@@ -1,0 +1,40 @@
+<!--
+  Generated template for the DetailinfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Information</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content  padding>
+  <div *ngFor="let event of events">
+  <h1 center>{{event.judul}}</h1>
+  <img src="https://image.ibb.co/mkME6T/gambar2.png">
+  <br><br>
+  <ion-row>
+    <ion-col col-1><ion-icon  name="body"></ion-icon></ion-col>
+    <ion-col col-11 style="font-size:8pt">Attendance : 100 of {{event.kuota}}</ion-col>
+  </ion-row>
+  <ion-row>
+    <p>{{event.konten}}</p>
+  </ion-row>
+  <ion-row>
+    <ion-card padding>
+      <h2>Location</h2>
+      <div id="map"></div>
+    </ion-card>
+    <ion-card></ion-card>
+    <ion-card></ion-card>
+  </ion-row>
+</div>
+</ion-content>
+<ion-footer no-padding>
+  <button col-12 ion-button color="secondary" (click)="saveUser()">Book Now</button>
+</ion-footer>

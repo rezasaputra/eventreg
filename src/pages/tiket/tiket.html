@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      My Ticket
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+      <ion-row  >
+        <ion-col col-6 *ngFor="let tiket of tikets">
+
+          <ion-card (click)="openModal({kode:tiket.qrcode})">
+            <ion-row padding  style="background-color:#000000">
+            <ion-col col-6>
+              <h1 style="font-size:20pt;color:#ffffff"><b>{{tiket.tanggal?.substring(8)}}</b></h1>
+            </ion-col>
+            <ion-col col-6>
+              <ion-row style="color:#ffffff;">
+                <b>{{tiket.tanggal?.substring(5,7)=='01' ? 'January':
+                    tiket.tanggal?.substring(5,7)=='02' ? 'Febuary':
+                    tiket.tanggal?.substring(5,7)=='03' ? 'March':
+                    tiket.tanggal?.substring(5,7)=='04' ? 'April':
+                    tiket.tanggal?.substring(5,7)=='05' ? 'May':
+                    tiket.tanggal?.substring(5,7)=='06' ? 'June':
+                    tiket.tanggal?.substring(5,7)=='07' ? 'July':
+                    tiket.tanggal?.substring(5,7)=='08' ? 'August':
+                    tiket.tanggal?.substring(5,7)=='09' ? 'September':
+                    tiket.tanggal?.substring(5,7)=='10' ? 'October':
+                    tiket.tanggal?.substring(5,7)=='11' ? 'November':'December'
+                }}</b>
+              </ion-row>
+              <ion-row style="color:#ffffff">
+                <b>{{tiket.tanggal?.substring(4,0)}}</b>
+              </ion-row>
+            </ion-col>
+            </ion-row>
+            <ion-row>
+            <div class="card" padding>
+              <h3>{{tiket.judul}}</h3>
+            </div>
+          </ion-row>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+</ion-content>

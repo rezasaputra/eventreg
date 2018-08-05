@@ -1,0 +1,34 @@
+<!--
+  Generated template for the DetailnewsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>News</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content  padding>
+  <div *ngFor="let event of events">
+  <img src="https://preview.ibb.co/gjh0ko/the_script_news.jpg">
+  <h1>{{event.judul}}</h1>
+  <p >{{event.tanggal?.substring(8)}} {{event.tanggal?.substring(5,7)=='01' ? 'January':
+      event.tanggal?.substring(5,7)=='02' ? 'Febuary':
+      event.tanggal?.substring(5,7)=='03' ? 'March':
+      event.tanggal?.substring(5,7)=='04' ? 'April':
+      event.tanggal?.substring(5,7)=='05' ? 'May':
+      event.tanggal?.substring(5,7)=='06' ? 'June':
+      event.tanggal?.substring(5,7)=='07' ? 'July':
+      event.tanggal?.substring(5,7)=='08' ? 'August':
+      event.tanggal?.substring(5,7)=='09' ? 'September':
+      event.tanggal?.substring(5,7)=='10' ? 'October':
+      event.tanggal?.substring(5,7)=='11' ? 'November':'December'
+  }} {{event.tanggal?.substring(4,0)}} </p>
+  <div class="line"></div>
+  <p>{{event.konten}}</p>
+</div>
+</ion-content>

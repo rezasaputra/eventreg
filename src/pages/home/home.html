@@ -1,17 +1,137 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
+
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content no-padding no-margin>
+<ion-row class="row-center">
+  <img src="https://image.ibb.co/g2F7RT/logo_head.png">
+</ion-row>
+<!-- <ion-row >
+  <ion-slides autoplay="5000" loop="true" speed="3000">
+  <ion-slide>
+    <img src="http://placehold.it/300x300/ff0000/ffffff" alt="">
+  </ion-slide>
+  <ion-slide>
+    <img src="http://placehold.it/300x300/ffcc33/ffffff" alt="">
+  </ion-slide>
+  <ion-slide>
+    <img src="http://placehold.it/300x300/336699/ffffff" alt="">
+  </ion-slide>
+  <ion-slide>
+    <img src="http://placehold.it/300x300/33ccff/ffffff" alt="">
+  </ion-slide>
+</ion-slides>
+</ion-row> -->
+
+<ion-row>
+
+  <ion-toolbar no-border-top >
+    <ion-segment [(ngModel)]="mainmenu" color="black">
+      <ion-segment-button value="News" active>
+        News
+      </ion-segment-button>
+      <ion-segment-button value="Event">
+        Event
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+  <div [ngSwitch]="mainmenu">
+    <ion-list *ngSwitchCase="'News'">
+      <ion-card *ngFor="let new of news" (click)="detailnews(new.id)">
+      <img src="https://preview.ibb.co/gjh0ko/the_script_news.jpg">
+
+      <ion-card-content>
+        <h2><b>{{new.judul}}</b></h2>
+        <p>{{new.konten?.substring(100,0)}}...</p>
+      </ion-card-content>
+
+      <ion-row>
+        <ion-col right text-right>
+          <ion-note>
+            11h ago
+          </ion-note>
+        </ion-col>
+      </ion-row>
+
+    </ion-card>
+
+    <!-- <ion-card (click)="detailnews()">
+    <img src="https://preview.ibb.co/dYAZd8/Screenshot_20180108_135603.jpg" >
+
+    <ion-card-content>
+      <h2><b>New Year’s Eve with Ran</b></h2>
+      <p>Acara pergantian malam tahun baru 2017 bertajuk Let’s Go Grand!, Groove, RAN, and Dance sukses digelar di Grand Ambarukkmo Hotel, Yogyakarta..</p>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col right text-right>
+        <ion-note>
+          11h ago
+        </ion-note>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+  <ion-card (click)="detailnews()">
+  <img src="https://preview.ibb.co/kHo9BT/DSC02576_1.jpg">
+
+  <ion-card-content>
+    <h2><b>Authenticity 2017 – Andra & The Backbone</b></h2>
+    <p>Authenticity sukses menggelar konser Andra & The Backbone di bulan Desember 2017...</p>
+  </ion-card-content>
+
+  <ion-row>
+    <ion-col right text-right>
+      <ion-note>
+        11h ago
+      </ion-note>
+    </ion-col>
+  </ion-row>
+
+</ion-card> -->
+
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'Event'" padding >
+    <ion-item  *ngFor="let event of events" (click)="detailinfo(event.id)" >
+      <ion-row style="border:1px solid black" >
+        <ion-col style="background-color:#000000"   col-5>
+          <ion-row >
+          <ion-col  col-6>
+            <h1 style="font-size:23pt;color:#ffffff"><b>{{event.tanggal?.substring(8)}}</b></h1>
+          </ion-col>
+          <ion-col col-6>
+            <ion-row style="color:#ffffff">
+              <b>{{event.tanggal?.substring(5,7)=='01' ? 'JAN':
+                  event.tanggal?.substring(5,7)=='02' ? 'FEB':
+                  event.tanggal?.substring(5,7)=='03' ? 'MAR':
+                  event.tanggal?.substring(5,7)=='04' ? 'APR':
+                  event.tanggal?.substring(5,7)=='05' ? 'MAY':
+                  event.tanggal?.substring(5,7)=='06' ? 'JUN':
+                  event.tanggal?.substring(5,7)=='07' ? 'JUL':
+                  event.tanggal?.substring(5,7)=='08' ? 'AUG':
+                  event.tanggal?.substring(5,7)=='09' ? 'SEP':
+                  event.tanggal?.substring(5,7)=='10' ? 'OCT':
+                  event.tanggal?.substring(5,7)=='11' ? 'NOV':'DEC'
+              }}</b>
+            </ion-row>
+            <ion-row style="color:#ffffff">
+              <b>{{event.tanggal?.substring(4,0)}}</b>
+            </ion-row>
+          </ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col col-7>
+          <ion-col class="isi" text-wrap>
+            <h2><b>{{event.judul}}</b></h2>
+          </ion-col>
+        </ion-col>
+      </ion-row>
+   </ion-item>
+  </ion-list>
+
+  </div>
+
+</ion-row>
 </ion-content>
